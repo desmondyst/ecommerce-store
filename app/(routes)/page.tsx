@@ -14,8 +14,9 @@ const HomePage = async () => {
         isFeatured: true,
     });
 
+    // #NOTE: HARDCODED BILBOARD FOR HOME PAGE --> BUG POINT
     const billboard = await getBillboard(
-        "fc54cd6f-e8ad-4081-b737-8513c8f75637"
+        "268e7765-d9db-46f6-9a8e-4443c4ea300d"
     );
 
     return (
