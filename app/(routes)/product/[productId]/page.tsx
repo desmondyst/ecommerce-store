@@ -5,6 +5,7 @@ import Info from "@/components/info";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 import { revalidatePath } from "next/cache";
+import toast from "react-hot-toast";
 
 interface ProductPageProps {
     params: {
@@ -15,6 +16,7 @@ interface ProductPageProps {
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     // to not cache
     revalidatePath("/product");
+
     const product = await getProduct(params.productId);
 
     const suggestedProducts = await getProducts({
