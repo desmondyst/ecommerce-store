@@ -57,7 +57,7 @@ const Summary = () => {
 
             const err = error as AxiosError;
             console.log(err);
-            const errMessage = err.response?.request?.statusText;
+            const errMessage = err.response?.data;
             console.log(errMessage);
             if (
                 errMessage === "Some of the products are no longer available."
