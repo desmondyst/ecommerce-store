@@ -23,9 +23,7 @@ const useCart = create(
                     (item) => item.id === data.id
                 );
 
-                console.log(existingItem);
                 if (existingItem) {
-                    console.log("existing item");
                     return toast.error("Item already in cart.");
                 }
 

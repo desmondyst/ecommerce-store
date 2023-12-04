@@ -38,6 +38,7 @@ const Summary = () => {
     );
 
     const onCheckOut = async () => {
+        console.log("Check out called");
         try {
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
@@ -51,8 +52,10 @@ const Summary = () => {
             // # QUESTION: WHY CANNT? Think can...
             // router.push(response.data.url);
         } catch (error) {
+            console.log("Inside error blcok");
             const err = error as AxiosError;
             const errMessage = err.response?.request?.statusText;
+            console.log(errMessage);
             if (
                 errMessage === "Some of the products are no longer available."
             ) {
