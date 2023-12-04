@@ -52,13 +52,10 @@ const Summary = () => {
             // # QUESTION: WHY CANNT? Think can...
             // router.push(response.data.url);
         } catch (error) {
-            console.log("Inside error blcok");
-            console.log(error);
-
             const err = error as AxiosError;
-            console.log(err);
+
             const errMessage = err.response?.data;
-            console.log(errMessage);
+
             if (
                 errMessage === "Some of the products are no longer available."
             ) {
