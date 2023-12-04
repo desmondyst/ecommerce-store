@@ -10,7 +10,7 @@ import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
 import usePreviewModal from "@/hooks/use-preview-modal";
-import useCart from "@/hooks/use-kart";
+import useCart from "@/hooks/use-cart";
 import toast from "react-hot-toast";
 
 interface ProductCardProps {

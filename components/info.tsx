@@ -5,7 +5,7 @@ import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import toast from "react-hot-toast";
-import useCart from "@/hooks/use-kart";
+import useCart from "@/hooks/use-cart";
 
 interface InfoProps {
     data: Product;

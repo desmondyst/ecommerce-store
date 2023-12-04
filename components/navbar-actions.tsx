@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/button";
 import { ShoppingBag } from "lucide-react";
-import useCart from "@/hooks/use-kart";
+import useCart from "@/hooks/use-cart";
 import { useRouter } from "next/navigation";
 
 const NavbarActions = () => {

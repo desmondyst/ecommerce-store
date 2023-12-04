@@ -1,17 +1,20 @@
 "use client";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
-import useCart from "@/hooks/use-kart";
+import useCart from "@/hooks/use-cart";
+import { Product } from "@/types";
 
 const Summary = () => {
     // extracting this way as we need use in useeffect
     const searchParams = useSearchParams();
+    const cart = useCart();
     const items = useCart((state) => state.items);
+
     const removeAll = useCart((state) => state.removeAll);
     const emptyCart = items.length === 0;
 
@@ -35,17 +38,29 @@ const Summary = () => {
     );
 
     const onCheckOut = async () => {
-        const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-            {
-                productIds: items.map((item) => item.id),
-            }
-        );
+        try {
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+                {
+                    productIds: items.map((item) => item.id),
+                }
+            );
 
-        // Putting it all together, this line of code sets the current browser window's location to the URL specified in response.data.url. In other words, it redirects the user to a new page or resource indicated by the URL stored in response.data.url.
-        window.location = response.data.url;
-        // # QUESTION: WHY CANNT? Think can...
-        // router.push(response.data.url);
+            // Putting it all together, this line of code sets the current browser window's location to the URL specified in response.data.url. In other words, it redirects the user to a new page or resource indicated by the URL stored in response.data.url.
+            window.location = response.data.url;
+            // # QUESTION: WHY CANNT? Think can...
+            // router.push(response.data.url);
+        } catch (error) {
+            const err = error as AxiosError;
+            const errMessage = err.response?.request?.statusText;
+            if (
+                errMessage === "Some of the products are no longer available."
+            ) {
+                toast.error(
+                    `Some of the products in your cart are no longer available. `
+                );
+            }
+        }
     };
 
     return (
