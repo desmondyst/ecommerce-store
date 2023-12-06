@@ -36,6 +36,13 @@ const Info: React.FC<InfoProps> = ({ data }) => {
                         style={{ backgroundColor: data?.color?.value }}
                     />
                 </div>
+                {data?.quantity <= 5 && (
+                    <div className="flex items-center gap-x-4">
+                        <div className="text-rose-500 font-bold">
+                            Grab it fast! {data?.quantity} quantity remaining!
+                        </div>
+                    </div>
+                )}
             </div>
             <div className="mt-10 flex items-center gap-x-3">
                 <Button
