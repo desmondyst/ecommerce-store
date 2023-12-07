@@ -1,7 +1,7 @@
 import Container from "@/components/ui/container";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function Loading() {
+const LandingPageSkeleton = () => {
     return (
         <Container>
             <div className="space-y-10 pb-10">
@@ -28,4 +28,6 @@ export default function Loading() {
             </div>
         </Container>
     );
-}
+};
+
+export default LandingPageSkeleton;

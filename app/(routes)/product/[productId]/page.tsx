@@ -6,6 +6,7 @@ import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 import { revalidatePath } from "next/cache";
 import toast from "react-hot-toast";
+import Loading from "./loading";
 
 interface ProductPageProps {
     params: {
@@ -29,6 +30,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
     );
 
     return (
+        // <Loading />
         <div className="bg-white">
             <Container>
                 <div className="px-4 py-10 sm:px-6 lg:px-8">
